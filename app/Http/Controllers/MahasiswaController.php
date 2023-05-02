@@ -3,8 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah;
+use App\Models\Matakuliah;
 
-// use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -30,13 +31,13 @@ class MahasiswaController extends Controller
         // return view('mahasiswas.index',compact('mahasiswas','user'));
         return view('mahasiswas.index',compact('mahasiswas'));
     }
+
     public function create()
     {
-        // return view('mahasiswas.create');
-        
         $kelas = Kelas::all(); // mendapatkan data dari tabel kelas
         return view('mahasiswas.create',['kelas'=>$kelas]);
     }
+
     public function store(Request $request)
     {
         //melakukan validasi data
@@ -79,6 +80,15 @@ class MahasiswaController extends Controller
         $Mahasiswa = Mahasiswa::find($Nim);
         return view('mahasiswas.detail', compact('Mahasiswa'));
     }
+
+    public function nilai($Nim)
+    {
+        //menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
+        $Mahasiswa = Mahasiswa::find($Nim);
+        $nilai = Mahasiswa_Matakuliah::where('mahasiswa_id', $Nim)->get();
+        return view ('mahasiswas.nilai',compact('Mahasiswa', 'nilai'));
+    }
+
     public function edit($Nim)
     {
         //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
@@ -86,6 +96,7 @@ class MahasiswaController extends Controller
         $kelas = Kelas::all();
         return view('mahasiswas.edit', compact('Mahasiswa','kelas'));
     }
+
     public function update(Request $request, $Nim)
     {
         //melakukan validasi data
@@ -114,6 +125,7 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswas.index')
             ->with('success', 'Mahasiswa Berhasil Diupdate');
     }
+
     public function destroy($Nim)
     {
         //fungsi eloquent untuk menghapus data

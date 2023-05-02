@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MahasiswaController;
+
 use Illuminate\Http\Request;
 
 /*
@@ -23,5 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('mahasiswas', MahasiswaController::class);
+
+Route::get('/mahasiswas/nilai/{Nim}' ,[MahasiswaController::class,'nilai'])->name('mahasiswas.nilai');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 //Model Eloquent
 class Mahasiswa extends Model//Definisi Model
  {
@@ -21,13 +22,12 @@ protected $fillable = [
     'No_Handphone',
     ];
 
-/**
- * Get the kelas that owns the Mahasiswa
- *
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
 public function kelas()
 {
     return $this->belongsTo(Kelas::class);
+}
+
+public function mahasiswa_matakuliah () {
+    return $this->hasMany(Mahasiswa_Matakuliah::class);
 }
 };
