@@ -19,7 +19,7 @@
                         </div>
                     @endif
                     <form method="post" action="{{ route('mahasiswas.store') }}" id="myFo
-rm">
+rm" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="Nim">Nim</label>
@@ -29,6 +29,11 @@ rm">
                             <label for="Nama">Nama</label>
                             <input type="Nama" name="Nama" class="form-control" id="Nama"
                                 aria-describedby="Nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Gambar</label>
+                            <input type="file" class="form-control" required="required" name="image">
+                            <br>
                         </div>
                         <div class="form-group">
                             <label for="Kelas">Kelas</label>

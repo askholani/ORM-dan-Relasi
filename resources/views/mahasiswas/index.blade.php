@@ -7,6 +7,7 @@
             </div>
             <div class="float-right my-2">
                 <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
+                <a class="btn btn-primary" href="{{ route('mahasiswas.cetak') }}"> Cetak</a>
             </div>
         </div>
     </div>
@@ -20,6 +21,7 @@
             <tr>
                 <th>Nim</th>
                 <th>Nama</th>
+                <th>Gambar</th>
                 <th>Kelas</th>
                 <th>Jurusan</th>
                 <th>No_Handphone</th>
@@ -31,6 +33,9 @@
                 <tr>
                     <td>{{ $Mahasiswa->Nim }}</td>
                     <td>{{ $Mahasiswa->Nama }}</td>
+                    <td>
+                        <img src="{{ asset('storage/' . $Mahasiswa->featured_image) }}" alt="image" style="width: 100px">
+                    </td>
                     <td>{{ $Mahasiswa->Kelas->nama_kelas }}</td>
                     <td>{{ $Mahasiswa->Jurusan }}</td>
                     <td>{{ $Mahasiswa->No_Handphone }}</td>

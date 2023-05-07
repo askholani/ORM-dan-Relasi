@@ -20,6 +20,7 @@ protected $fillable = [
     'kelas_id',
     'Jurusan',
     'No_Handphone',
+    'featured_image'
     ];
 
 public function kelas()
